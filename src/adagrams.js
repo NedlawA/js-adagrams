@@ -1,13 +1,13 @@
-import { LETTER_SCORE, LETTER_POOL } from "./gameConstants";
+import { LETTER_SCORE, LETTER_POOL } from './gameConstants';
 
 export const drawLetters = () => {
   const letters = [];
   while (letters.length < 10) {
-    const add_letter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    if (letters.filter(x => x === add_letter).length < LETTER_POOL[add_letter]) {
-      letters.push(add_letter);
+    const addLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    if (letters.filter(x => x === addLetter).length < LETTER_POOL[addLetter]) {
+      letters.push(addLetter);
     }
-  };
+  }
   return letters
 };
 
@@ -52,6 +52,7 @@ export const highestScoreFrom = (words) => {
       }
     }
   });
+  // eslint-disable-next-line quotes
   const result = { "score": highScore, "word": winningWord };
   return result;
 }
