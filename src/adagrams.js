@@ -64,7 +64,6 @@ export const scoreWord = (word) => {
   if (word.length >= 7) {
     score += 8;
   }
-  console.log(score);
   return score;
 };
 
