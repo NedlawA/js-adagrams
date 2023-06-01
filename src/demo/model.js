@@ -103,6 +103,7 @@ class Model {
   _roundWinner(round) {
     const bestPlays = this.config.players
                         .map((player) => ({ player, ...this._bestPlay(round, player) }))
+                        // eslint-disable-next-line no-unused-vars
                         .filter(({ player, word, score }) => word !== undefined);
 
     if(bestPlays.length < 1) {

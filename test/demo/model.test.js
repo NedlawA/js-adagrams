@@ -1,7 +1,7 @@
 import Model from 'demo/model';
 import Adagrams from 'demo/adagrams';
 
-describe.skip('Game Model', () => {
+describe ('Game Model', () => {
   const config = {
     players: [
       'Player A',
@@ -20,6 +20,7 @@ describe.skip('Game Model', () => {
 
     it('requires a config parameter', () => {
       expect(() => {
+        // eslint-disable-next-line no-unused-vars
         const model = new Model();
       }).toThrow(/config/);
     });
@@ -276,7 +277,7 @@ describe.skip('Game Model', () => {
         return model.letterBank.slice(0, 5).join('');
       };
 
-      it('it returns the word score', () => {
+      it('returns the word score', () => {
         const model = getModel();
         const word = getWord(model);
         const score = Adagrams.scoreWord(word);
@@ -315,7 +316,7 @@ describe.skip('Game Model', () => {
         }).length + 1);
       };
 
-      it('it returns null', () => {
+      it('returns null', () => {
         const model = getModel();
         const word = getWord(model);
 
