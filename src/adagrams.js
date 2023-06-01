@@ -33,7 +33,7 @@ export const drawLetters = () => {
   const letters = [];
   while (letters.length < 10) {
     const add_letter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    if (letters.filter(x => x == add_letter).length < LETTER_POOL[add_letter]) {
+    if (letters.filter(x => x === add_letter).length < LETTER_POOL[add_letter]) {
       letters.push(add_letter);
     }
   };
@@ -47,7 +47,6 @@ export const usesAvailableLetters = (input, lettersInHand) => {
     if (!(availableLetters.includes(letter))) {
       return false;
     } else {
-      // availableLetters.filter(letter => letter != word[i]); returns new array
       availableLetters.splice(word[letter], 1);
     }
   }
@@ -69,6 +68,20 @@ export const scoreWord = (word) => {
   return score;
 };
 
-// export const highestScoreFrom = (words) => {
-//   // Implement this method for wave 4
-// };
+export const highestScoreFrom = (words) => {
+  let highScore = 0;
+  let winningWord = '';
+  for (let word of words) {
+    let score = scoreWord(word)
+    if (score > highScore) {
+      highScore = score;
+      winningWord = word;
+    } else if (score === highScore) {
+      if ((word.length === 10 || word.length < winningWord.length) && winningWord.length != 10) {
+        winningWord = word;
+      }
+    }
+  }
+  const result = { "score": highScore, "word": winningWord };
+  return result;
+}
