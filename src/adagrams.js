@@ -42,7 +42,7 @@ export const highestScoreFrom = (words) => {
   let highScore = 0;
   let winningWord = '';
   words.forEach(word => {
-    let score = scoreWord(word)
+    let score = scoreWord(word);
     if (score > highScore) {
       highScore = score;
       winningWord = word;
@@ -51,8 +51,6 @@ export const highestScoreFrom = (words) => {
         winningWord = word;
       }
     }
-  });
-  // eslint-disable-next-line quotes
-  const result = { "score": highScore, "word": winningWord };
-  return result;
+  })
+  return { score: highScore, word: winningWord };
 }
