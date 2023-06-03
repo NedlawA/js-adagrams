@@ -26,7 +26,6 @@ export const usesAvailableLetters = (input, lettersInHand) => {
 
 export const scoreWord = (word) => {
   let score = 0;
-
   word = word.toUpperCase()
   for (let letter of word) {
     let letterScore = LETTER_SCORE[letter];

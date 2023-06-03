@@ -20,7 +20,6 @@ describe ('Game Model', () => {
 
     it('requires a config parameter', () => {
       expect(() => {
-        // eslint-disable-next-line no-unused-vars
         const model = new Model();
       }).toThrow(/config/);
     });
