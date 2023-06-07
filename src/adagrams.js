@@ -4,7 +4,7 @@ export const drawLetters = () => {
   const letters = [];
   const letterPool = Object.keys(LETTER_POOL);
   while (letters.length < 10) {
-    const random = Math.floor(Math.random() * 26);
+    const random = Math.floor(Math.random() * letterPool.length);
     const addLetter = letterPool[random];
     if (letters.filter(x => x === addLetter).length < LETTER_POOL[addLetter]) {
       letters.push(addLetter);
