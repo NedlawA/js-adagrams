@@ -2,8 +2,10 @@ import { LETTER_SCORE, LETTER_POOL } from './gameConstants';
 
 export const drawLetters = () => {
   const letters = [];
+  const letterPool = Object.keys(LETTER_POOL);
   while (letters.length < 10) {
-    const addLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    const random = Math.floor(Math.random() * 26);
+    const addLetter = letterPool[random];
     if (letters.filter(x => x === addLetter).length < LETTER_POOL[addLetter]) {
       letters.push(addLetter);
     }
