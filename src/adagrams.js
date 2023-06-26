@@ -10,25 +10,30 @@ export const drawLetters = () => {
       letters.push(addLetter);
     }
   }
-  return letters
+  return letters;
 };
 
 export const usesAvailableLetters = (input, lettersInHand) => {
-  const availableLetters = [...lettersInHand];
   const word = input.toUpperCase();
-  for (const letter of word) {
-    if (!(availableLetters.includes(letter))) {
+  const availableLetters = {};
+  lettersInHand.forEach(item => {
+    if (availableLetters[item]) { availableLetters[item]++; }
+    else { availableLetters[item] = 1; }
+  });
+  const letters = {};
+  for (const letter of word) { letters[letter] = letters[letter] + 1 || 1; }
+  for (const char in letters) {
+    console.log(char);
+    if (!(letters[char] <= availableLetters[char])) {
       return false;
-    } else {
-      availableLetters.splice(word[letter], 1);
     }
   }
-  return true
+  return true;
 };
 
 export const scoreWord = (word) => {
   let score = 0;
-  word = word.toUpperCase()
+  word = word.toUpperCase();
   for (let letter of word) {
     score += LETTER_SCORE[letter];
   }
@@ -51,6 +56,6 @@ export const highestScoreFrom = (words) => {
         winningWord = word;
       }
     }
-  })
+  });
   return { score: highScore, word: winningWord };
-}
+};
